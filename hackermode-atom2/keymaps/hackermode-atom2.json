@@ -1,5 +1,5 @@
 {
   "atom-workspace": {
-    "ctrl-alt-o": "hackermode-atom2:toggle"
+    "ctrl-alt-shift-h": "hackermode-atom2:toggle"
   }
 }

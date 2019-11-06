@@ -14,12 +14,14 @@ async function print_char(data){
   let editor
   if (editor = atom.workspace.getActiveTextEditor()) {
     for (var i = 0; i < data.length; i++) {
-      delay = Math.floor(Math.random() * 10)*5  // A random delay between 0 and 50 ms
+      //document.body.style.marginTop = "10px"
+      delay = Math.floor(Math.random() * 10)*2  // A random delay between 0 and 50 ms
       await sleep(delay)
-      editor.insertText(data.charAt(i))
+      //document.body.style.marginTop = "0px"
+      editor.insertText(data.charAt(i), options={'preserveTrailingLineIndentation':true, 'normalizeLineEndings':false})
     }
-    editor.insertText("=========================================================================\n")
-    atom.themes.config.settings.core.themes = ["atom-dark-ui", "atom-dark-syntax"]
+    editor.insertText("\n=========================================================================\n")
+    atom.themes.config.settings.core.themes = ["one-dark-ui", "atom-dark-syntax"]
     atom.themes.activateThemes()
     console.log("Returning to standard theme")
   }
