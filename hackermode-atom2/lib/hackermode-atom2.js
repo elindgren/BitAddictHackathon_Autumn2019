@@ -14,10 +14,14 @@ async function print_char(data){
   let editor
   if (editor = atom.workspace.getActiveTextEditor()) {
     for (var i = 0; i < data.length; i++) {
-      await sleep(100)
+      delay = Math.floor(Math.random() * 10)*5  // A random delay between 0 and 50 ms
+      await sleep(delay)
       editor.insertText(data.charAt(i))
     }
-
+    editor.insertText("=========================================================================\n")
+    atom.themes.config.settings.core.themes = ["atom-dark-ui", "atom-dark-syntax"]
+    atom.themes.activateThemes()
+    console.log("Returning to standard theme")
   }
 }
 
@@ -61,24 +65,23 @@ export default {
     // Load txt file
     var readStream = fs.createReadStream(filename, 'utf8');
     readStream.on('data', function(chunk) {
-      data += chunk;
+    data += chunk;
     }).on('end', function() {
         // On text load, print it to console
         console.log("Finished reading data")
-        console.log(data)
         print_char(data)
-        //for (var i = 0; i < data.length; i++) {
-        //setTimeout(print_char, 100, data.charAt(i));
-        //  await sleep(1000)
-        //  console.log("Waited")
-        //}
-          //
-          //setTimeout(this.print_char,10, data.charAt(i))
     });
   },
 
   toggle() {
     console.log('HackermodeAtom2 was toggled!');
+    atom.themes.config.settings.core.themes = ["black-and-red-ui", "rbe-matrix-syntax"]
+    atom.themes.activateThemes()
+
+    let editor
+    if (editor = atom.workspace.getActiveTextEditor()) {
+      editor.insertText("=============================== Hackerman V1.337 ==============================\n")
+    }
     this.load_hack_file()
   }
 };
