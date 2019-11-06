@@ -4,6 +4,23 @@ var fs = require('fs')
 import HackermodeAtom2View from './hackermode-atom2-view';
 import { CompositeDisposable } from 'atom';
 
+function sleep(ms){
+    return new Promise(resolve=>{
+        setTimeout(resolve,ms)
+    })
+}
+
+async function print_char(data){
+  let editor
+  if (editor = atom.workspace.getActiveTextEditor()) {
+    for (var i = 0; i < data.length; i++) {
+      await sleep(100)
+      editor.insertText(data.charAt(i))
+    }
+
+  }
+}
+
 export default {
 
   hackermodeAtom2View: null,
@@ -40,21 +57,23 @@ export default {
 
   load_hack_file(){
     filename = "C:\\Users\\ericl\\github\\hackermode-atom2\\temp.txt"
-    hackercode = 'temp'
     data = ''
     // Load txt file
     var readStream = fs.createReadStream(filename, 'utf8');
     readStream.on('data', function(chunk) {
       data += chunk;
     }).on('end', function() {
-        console.log(data);
         // On text load, print it to console
-        let editor
-        if (editor = atom.workspace.getActiveTextEditor()) {
-          // TODO don't write all at the same time, in loop
-          console.log("Loaded code is: " + data)
-          editor.insertText(data)
-        }
+        console.log("Finished reading data")
+        console.log(data)
+        print_char(data)
+        //for (var i = 0; i < data.length; i++) {
+        //setTimeout(print_char, 100, data.charAt(i));
+        //  await sleep(1000)
+        //  console.log("Waited")
+        //}
+          //
+          //setTimeout(this.print_char,10, data.charAt(i))
     });
   },
 
