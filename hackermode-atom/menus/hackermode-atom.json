@@ -1,0 +1,26 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "Toggle hackermode-atom",
+        "command": "hackermode-atom:toggle"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "hackermode-atom",
+          "submenu": [
+            {
+              "label": "Toggle",
+              "command": "hackermode-atom:toggle"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
