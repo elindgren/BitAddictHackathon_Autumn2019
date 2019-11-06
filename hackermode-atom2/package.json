@@ -1,14 +1,14 @@
 {
-  "name": "hackermode-atom",
-  "main": "./lib/hackermode-atom",
+  "name": "hackermode-atom2",
+  "main": "./lib/hackermode-atom2",
   "version": "0.0.0",
   "description": "A short description of your package",
   "keywords": [
   ],
   "activationCommands": {
-    "atom-workspace": "hackermode-atom:toggle"
+    "atom-workspace": "hackermode-atom2:toggle"
   },
-  "repository": "https://github.com/atom/hackermode-atom",
+  "repository": "https://github.com/atom/hackermode-atom2",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"

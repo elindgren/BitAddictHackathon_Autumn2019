@@ -1,44 +1,44 @@
 'use babel';
 
-import HackermodeAtom from '../lib/hackermode-atom';
+import HackermodeAtom2 from '../lib/hackermode-atom2';
 
 // Use the command `window:run-package-specs` (cmd-alt-ctrl-p) to run specs.
 //
 // To run a specific `it` or `describe` block add an `f` to the front (e.g. `fit`
 // or `fdescribe`). Remove the `f` to unfocus the block.
 
-describe('HackermodeAtom', () => {
+describe('HackermodeAtom2', () => {
   let workspaceElement, activationPromise;
 
   beforeEach(() => {
     workspaceElement = atom.views.getView(atom.workspace);
-    activationPromise = atom.packages.activatePackage('hackermode-atom');
+    activationPromise = atom.packages.activatePackage('hackermode-atom2');
   });
 
-  describe('when the hackermode-atom:toggle event is triggered', () => {
+  describe('when the hackermode-atom2:toggle event is triggered', () => {
     it('hides and shows the modal panel', () => {
       // Before the activation event the view is not on the DOM, and no panel
       // has been created
-      expect(workspaceElement.querySelector('.hackermode-atom')).not.toExist();
+      expect(workspaceElement.querySelector('.hackermode-atom2')).not.toExist();
 
       // This is an activation event, triggering it will cause the package to be
       // activated.
-      atom.commands.dispatch(workspaceElement, 'hackermode-atom:toggle');
+      atom.commands.dispatch(workspaceElement, 'hackermode-atom2:toggle');
 
       waitsForPromise(() => {
         return activationPromise;
       });
 
       runs(() => {
-        expect(workspaceElement.querySelector('.hackermode-atom')).toExist();
+        expect(workspaceElement.querySelector('.hackermode-atom2')).toExist();
 
-        let hackermodeAtomElement = workspaceElement.querySelector('.hackermode-atom');
-        expect(hackermodeAtomElement).toExist();
+        let hackermodeAtom2Element = workspaceElement.querySelector('.hackermode-atom2');
+        expect(hackermodeAtom2Element).toExist();
 
-        let hackermodeAtomPanel = atom.workspace.panelForItem(hackermodeAtomElement);
-        expect(hackermodeAtomPanel.isVisible()).toBe(true);
-        atom.commands.dispatch(workspaceElement, 'hackermode-atom:toggle');
-        expect(hackermodeAtomPanel.isVisible()).toBe(false);
+        let hackermodeAtom2Panel = atom.workspace.panelForItem(hackermodeAtom2Element);
+        expect(hackermodeAtom2Panel.isVisible()).toBe(true);
+        atom.commands.dispatch(workspaceElement, 'hackermode-atom2:toggle');
+        expect(hackermodeAtom2Panel.isVisible()).toBe(false);
       });
     });
 
@@ -51,11 +51,11 @@ describe('HackermodeAtom', () => {
       // workspaceElement to the DOM are generally slower than those off DOM.
       jasmine.attachToDOM(workspaceElement);
 
-      expect(workspaceElement.querySelector('.hackermode-atom')).not.toExist();
+      expect(workspaceElement.querySelector('.hackermode-atom2')).not.toExist();
 
       // This is an activation event, triggering it causes the package to be
       // activated.
-      atom.commands.dispatch(workspaceElement, 'hackermode-atom:toggle');
+      atom.commands.dispatch(workspaceElement, 'hackermode-atom2:toggle');
 
       waitsForPromise(() => {
         return activationPromise;
@@ -63,10 +63,10 @@ describe('HackermodeAtom', () => {
 
       runs(() => {
         // Now we can test for view visibility
-        let hackermodeAtomElement = workspaceElement.querySelector('.hackermode-atom');
-        expect(hackermodeAtomElement).toBeVisible();
-        atom.commands.dispatch(workspaceElement, 'hackermode-atom:toggle');
-        expect(hackermodeAtomElement).not.toBeVisible();
+        let hackermodeAtom2Element = workspaceElement.querySelector('.hackermode-atom2');
+        expect(hackermodeAtom2Element).toBeVisible();
+        atom.commands.dispatch(workspaceElement, 'hackermode-atom2:toggle');
+        expect(hackermodeAtom2Element).not.toBeVisible();
       });
     });
   });

@@ -1,15 +1,15 @@
 'use babel';
 
-export default class HackermodeAtomView {
+export default class HackermodeAtom2View {
 
   constructor(serializedState) {
     // Create root element
     this.element = document.createElement('div');
-    this.element.classList.add('hackermode-atom');
+    this.element.classList.add('hackermode-atom2');
 
     // Create message element
     const message = document.createElement('div');
-    message.textContent = 'The HackermodeAtom package is Alive! It\'s ALIVE!';
+    message.textContent = 'The HackermodeAtom2 package is Alive! It\'s ALIVE!';
     message.classList.add('message');
     this.element.appendChild(message);
   }
