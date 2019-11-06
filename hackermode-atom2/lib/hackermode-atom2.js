@@ -11,11 +11,14 @@ function sleep(ms){
 }
 
 async function print_char(data){
+  var audio = new Audio('C:\\Users\\ericl\\repos\\BitAddictHackathon_Autumn2019\\Initial D - Deja Vu.mp3')
+  //audio.fastSeek(78);
+  audio.play();
   let editor
   if (editor = atom.workspace.getActiveTextEditor()) {
     for (var i = 0; i < data.length; i++) {
       //document.body.style.marginTop = "10px"
-      delay = Math.floor(Math.random() * 10)*2  // A random delay between 0 and 50 ms
+      delay = Math.floor(Math.random() * 10)  // A random delay between 0 and 50 ms
       await sleep(delay)
       //document.body.style.marginTop = "0px"
       editor.insertText(data.charAt(i), options={'preserveTrailingLineIndentation':true, 'normalizeLineEndings':false})
@@ -23,6 +26,7 @@ async function print_char(data){
     editor.insertText("\n=========================================================================\n")
     atom.themes.config.settings.core.themes = ["one-dark-ui", "atom-dark-syntax"]
     atom.themes.activateThemes()
+    audio.pause();
     console.log("Returning to standard theme")
   }
 }
@@ -62,7 +66,7 @@ export default {
   },
 
   load_hack_file(){
-    filename = "C:\\Users\\ericl\\github\\hackermode-atom2\\temp.txt"
+    filename = "C:\\Users\\ericl\\github\\hackermode-atom2\\temp2.txt"
     data = ''
     // Load txt file
     var readStream = fs.createReadStream(filename, 'utf8');
